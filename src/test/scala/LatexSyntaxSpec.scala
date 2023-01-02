@@ -28,6 +28,11 @@ object LatexSyntaxSpec extends ZIOSpecDefault:
         val input    = """\inlinescala{ZIO[-R, +E, +A]} has three type parameters."""
         val expected = "\"ZIO[-R, +E, +A]\" has three type parameters."
         assertTrue(extractParameter(input) == expected)
+      },
+      test("sentence with reference") {
+        val input    = """\refsource{zio:forking} demonstrates forking and \refsource{zio:joining} joining a fiber."""
+        val expected = "Listing 1 demonstrates forking and Listing 2 joining a fiber."
+        assertTrue(extractParameter(input) == expected)
       }
     )
   )

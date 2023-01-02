@@ -16,11 +16,18 @@ object LatexSyntax:
     *   - \inlinescala{println("Hello world")} -> "println("Hello world")"
     */
   def stripCommands(text: String): String =
+    var listingCounter = 1
+
+    def listingNumber(): Int =
+      listingCounter += 1 // Increment listing counter
+      listingCounter - 1  // Return previous value
+
     formatCommands(
       text,
       (command, parameter) =>
         command match
           case "inlinescala" | "inlinecode" => quoted(parameter)
+          case "refsource"                  => s"Listing ${listingNumber()}"
           case _                            => parameter
     )
 
