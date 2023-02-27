@@ -2,8 +2,7 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 watchBeforeCommand            := Watch.clearScreen
 
 name         := "clipboard-helper"
-version      := "0.1.0-SNAPSHOT"
-scalaVersion := "3.2.1"
+scalaVersion := "3.2.2"
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -14,7 +13,7 @@ scalacOptions ++= Seq(
   "-Ysafe-init"
 ) ++ Seq("-source", "future")
 
-val zioVersion = "2.0.5"
+val zioVersion = "2.0.9"
 
 libraryDependencies ++= Seq(
   "dev.zio" %% "zio" % zioVersion
